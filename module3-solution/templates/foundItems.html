@@ -1,0 +1,6 @@
+<ul>
+    <li ng-repeat="item in search.items">
+    {{ item.short_name }}, {{ item.name }}, {{ item.description }}
+    <button class="btn btn-default" ng-click="search.onRemove({index: $index});"><span class="glyphicon glyphicon-trash"></span> Don't want this one!</button>
+    </li>
+</ul>
