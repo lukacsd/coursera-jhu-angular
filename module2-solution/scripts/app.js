@@ -29,9 +29,11 @@
     InitialItemList.$inject = ['ItemServiceProvider'];
     function InitialItemList(ItemServiceProvider) {
       ItemServiceProvider.items = [
-        { name: "Ferrari", quantity: 1 },
-        { name: "Jaguar", quantity: 5 },
-        { name: "Tesla", quantity: 15 }
+        { name: "Ferrari", quantity: 0 },
+        { name: "Jaguar", quantity: 0 },
+        { name: "Tesla Model S", quantity: 5 },
+        { name: "Tesla Model X", quantity: 10 },
+        { name: "Lucid Air", quantity: 15 }
       ];
     };
 
