@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="col-md-6">
+    <fieldset>
+      <legend>Newsletter Registration</legend>
+      <form name='regForm' novalidate>
+
+        <label>First Name</label>
+        <input type="text" name="firstname" placeholder="First name" class="form-control"
+          ng-model="ctrl.user.firstname"
+          required>
+        <span
+          ng-if="(regForm.firstname.$error.required) && regForm.firstname.$touched">
+          Please enter your first name
+        </span>
+        <br>
+
+        <label>Last Name</label>
+        <input type="text" name="lastname" placeholder="Last name" class="form-control"
+          ng-model="ctrl.user.lastname"
+          required>
+        <span
+          ng-if="(regForm.lastname.$error.required) && regForm.lastname.$touched">
+          Please enter your last name
+        </span>
+        <br>
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Email" class="form-control"
+          ng-model="ctrl.user.email"
+          required>
+        <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span>
+        <br>
+
+        <label>Phone</label>
+        <input type="text" name="phone" placeholder="Phone" class="form-control"
+          ng-model="ctrl.user.phone">
+        <br>
+
+        <label>Favourite</label>
+        <input type="text" name="favourite" placeholder="Favourite" class="form-control"
+          ng-model="ctrl.user.favourite.shortName"
+          valid-menu-item
+          required>
+        <span ng-if="regForm.favourite.$invalid && regForm.favourite.$touched">
+          No such menu number exists
+        </span>
+        <br>
+
+        <button class="btn btn-default"
+          ng-disabled="regForm.$invalid"
+          ng-click="ctrl.submit()">Submit</button>
+
+      </form>
+    </fieldset>
+
+    <div ng-if="ctrl.message.length > 0">{{ ctrl.message }}</div>
+  </div>
+</div>

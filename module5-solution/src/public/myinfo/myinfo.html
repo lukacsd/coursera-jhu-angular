@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="col-md-6">
+
+    <div ng-if="ctrl.angular.equals(ctrl.user, {})">
+      Not Signed Up Yet. <a ui-sref="signup">Sign up Now!</a>
+    </div>
+
+    <fieldset ng-if="!ctrl.angular.equals(ctrl.user, {})">
+      <legend>My Registration Details</legend>
+      <form name='regForm' novalidate>
+
+        <label>First Name</label>
+        <input type="text" name="firstname" placeholder="First name" class="form-control"
+          ng-model="ctrl.user.firstname"
+          ng-disabled="true">
+
+        <label>Last Name</label>
+        <input type="text" name="lastname" placeholder="Last name" class="form-control"
+          ng-model="ctrl.user.lastname"
+          ng-disabled="true">
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Email" class="form-control"
+          ng-model="ctrl.user.email"
+          ng-disabled="true">
+
+        <div ng-if="ctrl.user.phone.length > 0">
+          <label>Phone</label>
+          <input
+            type="text" name="phone" placeholder="Phone" class="form-control"
+            ng-model="ctrl.user.phone"
+            ng-disabled="true">
+        </div>
+
+        <label>Favourite</label>
+        <div class="menu-item-photo">
+          <div>{{ctrl.user.favourite.name}}</div>
+          <img class="img-responsive" width="250" height="150" ng-src="{{ctrl.basePath}}/images/{{ctrl.user.favourite.shortName}}.jpg" alt="{{ctrl.user.favourite.name}}">
+          <div>{{ctrl.user.favourite.description}}</div>
+        </div>
+
+      </form>
+    </fieldset>
+  </div>
+</div>
