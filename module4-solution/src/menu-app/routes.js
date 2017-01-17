@@ -18,13 +18,9 @@
         templateUrl: 'src/menu-app/templates/categories-view.template.html',
         controller: 'CategoriesViewController as ctrl',
           resolve: {
-            data: ['MenuDataService',
-                    function (MenuDataService) {
-                      return MenuDataService.getAllCategories()
-                        .then(function(response) {
-                          return response.data;
-                        });
-                    }]
+            data: ['MenuDataService', function (MenuDataService) {
+                    return MenuDataService.getAllCategories();
+                  }]
           }
       })
       .state('items', {
@@ -32,12 +28,8 @@
         templateUrl: 'src/menu-app/templates/items-view.template.html',
         controller: 'ItemsViewController as ctrl',
         resolve: {
-          data: ['$stateParams', 'MenuDataService',
-                function ($stateParams, MenuDataService) {
-                  return MenuDataService.getItemsForCategory($stateParams.categoryShortName)
-                    .then(function(response) {
-                      return response.data;
-                    });
+          data: ['$stateParams', 'MenuDataService', function ($stateParams, MenuDataService) {
+                  return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
                 }]
         }
       });

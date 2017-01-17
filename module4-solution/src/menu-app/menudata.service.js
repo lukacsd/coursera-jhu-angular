@@ -3,22 +3,22 @@
 
   angular.module('Data')
     .service('MenuDataService', MenuDataService)
-    .constant('menuServiceUrl', "https://davids-restaurant.herokuapp.com/");
+    .constant('menuServiceUrl', "https://lukacsd-chinabistro.herokuapp.com");
 
   MenuDataService.$inject = ['$http', 'menuServiceUrl'];
   function MenuDataService($http, menuServiceUrl) {
     this.getAllCategories = function() {
-      return $http({
-        method: "GET",
-        url: (menuServiceUrl + "categories.json")
-      });
+      return $http.get( menuServiceUrl + "/categories.json" )
+        .then(function(response) {
+          return response.data;
+        });
     };
 
     this.getItemsForCategory = function(categoryShortName) {
-      return $http({
-        method: "GET",
-        url: (menuServiceUrl + "menu_items.json?category=" + categoryShortName)
-      });
+      return $http.get( menuServiceUrl + "/menu_items.json?category=" + categoryShortName )
+        .then(function(response) {
+          return response.data;
+        });
     };
   }
 
